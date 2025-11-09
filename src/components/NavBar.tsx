@@ -1,22 +1,26 @@
 "use client";
+import Image from 'next/image';
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ThemeToggle from "./ThemeToggle";
 import { useEffect, useRef, useState } from "react";
 
+//navigation links array
 const NAV = [
 	{ href: "/", label: "Home" },
+	{ href: "/asme", label: "ASME" },
 	{ href: "/team", label: "Our team" },
 	{ href: "/events", label: "Events" },
 	{ href: "/contact", label: "Contact us" },
 ];
 
+//navbar component state & refs
 export default function NavBar() {
 	const pathname = usePathname();
 	const [open, setOpen] = useState(false);
 	const containerRef = useRef<HTMLDivElement>(null);
 	const highlightRef = useRef<HTMLDivElement>(null);
-
+	//active page highlight logic
 	useEffect(() => {
 		const activeIndex = NAV.findIndex(
 			(n) => n.href === (pathname === "/" ? "/" : `/${pathname.split("/")[1]}`)
@@ -38,12 +42,21 @@ export default function NavBar() {
 	return (
 		<header className="sticky top-0 z-50 backdrop-blur bg-white/70 dark:bg-[#071428]/70 border-b border-black/5 dark:border-white/10">
 			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-				<Link href="/" className="flex items-center gap-2 select-none">
-					<span className="inline-block h-8 w-8 rounded-full bg-ieee-500" aria-hidden />
-					<span className="font-semibold tracking-wide">
-						IEEE <span className="text-ieee-500">BPDC</span>
-					</span>
-				</Link>
+				
+	
+<Link href="/" className="flex items-center gap-2 select-none">
+  <Image // logo icon
+    src="/IEEEBPDC.png" 
+    alt="IEEE BPDC Logo"
+    width={32}           
+    height={32}          
+    className="rounded-full object-cover"
+  />
+  <span className="font-semibold tracking-wide">
+    IEEE <span className="text-ieee-500">BPDC</span>
+  </span>
+</Link>
+
 				<nav className="hidden md:flex items-center gap-6 relative" ref={containerRef}>
 					<div
 						ref={highlightRef}
