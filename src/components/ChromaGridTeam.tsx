@@ -7,7 +7,7 @@ export default function ChromaGridTeam({ team }: { team: TeamMember[] }) {
   const [active, setActive] = useState<TeamMember | null>(null);
   return (
     <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-      <h2 className="text-2xl font-semibold mb-6">Our team</h2>
+      <h2 className="text-2xl font-semibold mb-6">Our Team</h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
         {team.map((m) => (
           <button key={m.id} className="group relative overflow-hidden rounded-xl border border-black/5 dark:border-white/10 bg-white dark:bg-[#071428]" onClick={() => setActive(m)}>
